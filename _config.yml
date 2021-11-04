@@ -48,7 +48,7 @@ links:
 
 since: 2014
 footer_text: Website Manajemen Indonesia
-license: MIT
+license:
 
 gallery:
   fancybox_css: https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css
