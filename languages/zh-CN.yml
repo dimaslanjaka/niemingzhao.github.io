@@ -6,6 +6,7 @@ about: 关于
 links: 友情链接
 rss_feed: RSS
 search: 搜索
+search_placeholder: 请输入关键字
 no_archive: 归档为空
 no_category: 分类为空
 no_tag: 标签为空
