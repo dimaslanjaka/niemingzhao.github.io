@@ -1,6 +1,13 @@
 const rExcerpt = /<!-- ?more ?-->/;
 
-hexo.extend.filter.register("after_post_render", function (data) {
+//hexo.extend.filter.register("after_post_render", );
+
+/**
+ * add to after_post_render
+ * @param {object} data
+ * @returns
+ */
+module.exports = function (data) {
   const content = data.content;
 
   // abort process existing excerpt
@@ -23,4 +30,4 @@ hexo.extend.filter.register("after_post_render", function (data) {
     // bring back content
     data.more = content;
   }
-});
+};
