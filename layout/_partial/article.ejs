@@ -286,9 +286,9 @@
     <% if (page.categories && page.categories.length > 0) { %> <%- list_categories(page.categories, { show_count: false,
     style: 'none', separator: '', class: 'mdui-ripple article_categories' }) %> <% } %>
     <!--a: 'mdui-ripple article_tags-link'-->
-    <% if (page.tags && page.tags.length > 0) { page.tags.each(function(tag){ %>
+    <% if (page.tags && page.tags.length > 0) { if (page.tags.each){ page.tags.each(function(tag){ %>
     <a href="/Tags/<%- tag.name %>" class="mdui-ripple article_tags-link" rel="link"><%- tag.name %></a>
-    <% }) } %>
+    <% }) }} %>
   </footer>
   <% if (is_post() && page.donate !== false && theme.donate && theme.donate.length) { %>
   <div class="mdui-dialog" id="donate">
