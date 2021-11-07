@@ -257,7 +257,7 @@
             </blockquote>
         </div>
         <footer class="mdui-card-actions">
-            <% if (page.categories && page.categories.length) { %>
+            <% if (page.categories && page.categories.length > 0) { %>
                 <%- list_categories(page.categories, {
                     show_count: false,
                     style: 'none',
@@ -265,7 +265,7 @@
                     class: 'mdui-ripple article_categories'
                 }) %>
             <% } %>
-            <% if (page.tags && page.tags.length) { %>
+            <% if (page.tags && page.tags.length > 0) { %>
                 <%- list_tags(page.tags, {
                     show_count: false,
                     style: 'none',
