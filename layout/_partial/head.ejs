@@ -8,7 +8,7 @@
   <% var title = page.title; if (is_archive()) { title = __('archive'); if (is_month()) { title += ': ' + page.year +
   '/' + page.month; } else if (is_year()) { title += ': ' + page.year; } } else if (is_category()) { title =
   __('category') + ': ' + page.category; } else if (is_tag()) { title = __('tag') + ': ' + page.tag; } %>
-  <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
+  <title><% if (title) { %><%= title %> | <% } %><%= page.webtitle || config.title %></title>
 
   <% if (theme.favicon) { %><%- favicon_tag(theme.favicon) %><% } %> <% if (theme.rss) { %><%- feed_tag(theme.rss,
   {title: config.title}) %><% } %> <%- open_graph({twitter_id: theme.open_graph.twitter, google_plus:

@@ -1,7 +1,16 @@
 "use strict";
 
 const fs = require("hexo-fs");
-const excerpt = require("./excerpt");
+const devmode = function () {
+  // if set NODE_ENV = "development"
+  if (typeof hexo.env.env === "string") {
+    return hexo.env.env == "development";
+  } else if (typeof hexo.env.args.development === "boolean") {
+    // if --development argument is set
+    return hexo.env.args.development;
+  }
+  return false;
+};
 
 hexo.extend.generator.register("custom", function () {
   return ["custom.css", "custom.js"].map((item) => ({
@@ -51,4 +60,10 @@ function before_render(post) {
 
 hexo.on("new", new_post);
 hexo.extend.filter.register("before_post_render", before_render);
-hexo.extend.filter.register("after_post_render", excerpt);
+hexo.extend.filter.register("after_post_render", require("./excerpt"));
+//console.log(hexo.env);
+/*
+if (devmode()) {
+  hexo.extend.filter.register("after_post_render", require("./prettier"));
+}
+*/
