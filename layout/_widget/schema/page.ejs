@@ -1,0 +1,32 @@
+<script type="application/ld+json">
+  {
+    "author": {
+      "url": "<%- page.author.url || page.url %>",
+      "name": "<%= get_author_name(page, config) %>",
+      "@context": "http://schema.org",
+      "@type": "Person"
+    },
+    "headline": "<%- page.title %>",
+    "publisher": {
+      "url": "<%- page.author.url || page.url %>",
+      "name": "<%= get_author_name(page, config) %>",
+      "@context": "http://schema.org",
+      "@type": "Person"
+    },
+    "description": "<%= page.subtitle || page.excerpt || page.title || config.title %>",
+    "datePublished": "<%= date(page.date, 'YYYY-MM-DD HH:mm:ss') %>",
+    "image": "<%- get_thumbnail(page, config, theme) %>",
+    "dateModified": "<%- date(page.modified || page.date, 'YYYY-MM-DD HH:mm:ss') %>",
+    "@context": "http://schema.org",
+    "@type": "Article"
+  }
+</script>
+<%
+/*let pg = page;
+delete pg.content;
+delete pg._content;
+delete pg.more;
+delete pg.excerpt;
+delete pg.raw;
+console.log(pg);*/
+%>

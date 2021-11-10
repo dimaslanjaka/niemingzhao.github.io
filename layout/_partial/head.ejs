@@ -5,19 +5,34 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <meta name="renderer" content="webkit" />
 
+  <link rel="dns-prefetch" href="//secure.gravatar.com" />
+  <link rel="dns-prefetch" href="//static.codepen.io" />
+  <link rel="dns-prefetch" href="//res.cloudinary.com" />
+  <link rel="dns-prefetch" href="//ad.doubleclick.com" />
+  <link rel="dns-prefetch" href="//s3.buysellads.com" />
+  <link rel="dns-prefetch" href="//srv.buysellads.com" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+  <link rel="dns-prefetch" href="//tpc.googlesyndication.com" />
+  <link rel="dns-prefetch" href="//adservice.google.com" />
+  <link rel="dns-prefetch" href="//www.googletagservices.com" />
+  <link rel="dns-prefetch" href="//git.webmanajemen.com" />
+
   <% var title = page.title; if (is_archive()) { title = __('archive'); if (is_month()) { title += ': ' + page.year +
   '/' + page.month; } else if (is_year()) { title += ': ' + page.year; } } else if (is_category()) { title =
   __('category') + ': ' + page.category; } else if (is_tag()) { title = __('tag') + ': ' + page.tag; } %>
+
   <title><% if (title) { %><%= title %> | <% } %><%= page.webtitle || config.title %></title>
 
   <% if (theme.favicon) { %><%- favicon_tag(theme.favicon) %><% } %> <% if (theme.rss) { %><%- feed_tag(theme.rss,
   {title: config.title}) %><% } %> <%- open_graph({twitter_id: theme.open_graph.twitter, google_plus:
   theme.open_graph.google_plus, fb_admins: theme.open_graph.fb_admins, fb_app_id: theme.open_graph.fb_app_id}) %>
 
-  <meta
-    name="keywords"
-    content="<% if (page.tags && page.tags.each) { page.tags.each(function (tag) { %><%= ',' + tag.name %><% })} else if (config.keywords) { %><%= config.keywords %><% } %>"
-  />
+  <meta name="keywords"
+    content="<% if (page.tags && page.tags.each) { page.tags.each(function (tag) { %><%= ',' + tag.name %><% })} else if (config.keywords) { %><%= config.keywords %><% } %>" />
   <meta name="format-detection" content="telephone=no,email=no" />
   <meta name="theme-color" content="#9C27B0" />
 
@@ -29,6 +44,10 @@
   <meta name="apple-mobile-web-app-title" content="<%= config.title %>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="apple-touch-icon" href="<%- url_for(theme.favicon) %>" />
+
+  <!-- note: for support on older browsers, you will need to load es5-shim and es6-shim -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/es6-shim/0.23.0/es6-shim.min.js"></script>
 
   <% if (page.current === 1 && is_home()) { %>
   <link rel="canonical" href="<%- config.url %>" />
@@ -42,4 +61,7 @@
   (theme.analytics.baidu_site_id) { %><%- partial('_widget/analytics/baidu-analytics') %><% } %> <% if
   (theme.analytics.cnzz_site_id) { %><%- partial('_widget/analytics/cnzz-analytics') %><% } %> <%- css(['css/mdui',
   'css/style']) %> <%- css('custom') %>
+
+  <!-- schema started -->
+  <% if (is_page()) { %><%- partial('_widget/schema/page') %><% } else if (is_post()){ %><%- partial('_widget/schema/post') %><% } %>
 </head>

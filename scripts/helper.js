@@ -2,6 +2,7 @@
 
 "use strict";
 const _ = require("lodash");
+const stringify = require("fast-json-stable-stringify");
 const log = require("hexo-log")({
   debug: false,
   silent: false,
@@ -71,7 +72,7 @@ hexo.extend.helper.register("get_thumbnail", function (post) {
   return url;
 });
 
-hexo.extend.helper.register("get_author_name", function (page, config) {
+hexo.extend.helper.register("get_author_name", function (page, config, theme) {
   const get_author = function (pageConf) {
     const author = pageConf.author;
     if (typeof author == "string") {
@@ -94,9 +95,15 @@ hexo.extend.helper.register("get_author_name", function (page, config) {
   let find = get_author(page);
   if (!find && typeof config == "object") {
     find = get_author(config);
+  } else if (!find && typeof theme == "object") {
+    find = get_author(theme);
   }
   if (typeof find == "string" && find.trim().length > 0) return find;
   return "Unknown Author";
+});
+
+hexo.extend.helper.register("json_encode", function (obj) {
+  return stringify(obj);
 });
 
 hexo.extend.helper.register(
@@ -113,5 +120,5 @@ hexo.extend.helper.register(
     } else {
       return str;
     }
-  },
+  }
 );

@@ -1,0 +1,12 @@
+{
+  "emmet.includeLanguages": {
+    "ejs": "html"
+  },
+  "html.format.templating": true,
+  "files.associations": {
+    "*.ejs": "html"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
+}
