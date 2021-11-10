@@ -45,9 +45,14 @@ hexo.extend.helper.register("escape_double_quotes", function (str, replacement) 
   return str.replace(/"/g, replacement);
 });
 
+function getPosition(str, m, i) {
+  return str.split(m, i).join(m).length;
+}
+
 hexo.extend.helper.register("get_thumbnail", function (post) {
   const config = hexo.config;
-  let url = post.thumbnail || post.cover || "";
+  let url = post.thumbnail || post.cover || null;
+  //const hasThumbnail = hexo.extend.helper.get("has_thumbnail").bind(this)(post);
   if (url && config.post_asset_folder && !/http[s]*.*|\/\/.*/.test(url)) {
     var link = post.permalink;
     var beginPos = getPosition(link, "/", 3) + 1;
