@@ -1,5 +1,5 @@
 <%
-let pg = post || page;
+let pg = typeof post !== 'undefined' ? post : page;
 /*delete pg.content;
 delete pg._content;
 delete pg.more;
