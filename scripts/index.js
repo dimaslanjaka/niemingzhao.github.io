@@ -62,8 +62,12 @@ hexo.on("new", new_post);
 hexo.extend.filter.register("before_post_render", before_render);
 hexo.extend.filter.register("after_post_render", require("./excerpt"));
 //console.log(hexo.env);
+
 /*
 if (devmode()) {
-  hexo.extend.filter.register("after_post_render", require("./prettier"));
+  // prettier only post content
+  //hexo.extend.filter.register("after_post_render", require("./prettier"));
+  // prettier entire html page
+  hexo.extend.filter.register("after_render:html", require("./prettier"));
 }
 */
