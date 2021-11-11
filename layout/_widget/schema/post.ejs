@@ -5,27 +5,27 @@ delete pg._content;
 delete pg.more;
 delete pg.excerpt;
 delete pg.raw;
-console.log(pg);*/
+writefile("post.json", pg);*/
 %>
 <script type="application/ld+json">
   {
     "author": {
-      "url": "<%- pg.author.url || pg.url %>",
+      "url": "<%- get_author_url(pg) || config.url %>",
       "name": "<%= get_author_name(page, config) %>",
       "@context": "http://schema.org",
       "@type": "Person"
     },
     "headline": "<%- pg.title %>",
     "publisher": {
-      "url": "<%- pg.author.url || pg.url %>",
+      "url": "<%- get_author_url(page) || config.url %>",
       "name": "<%= get_author_name(pg, config) %>",
       "@context": "http://schema.org",
       "@type": "Person"
     },
-    "description": "<%= pg.subtitle || pg.excerpt || pg.title || config.title %>",
+    "description": "<%= pg.subtitle %>, <%= pg.excerpt %>, <%= pg.title %>, <%= config.title %>",
     "datePublished": "<%= date(pg.date, 'YYYY-MM-DD HH:mm:ss') %>",
     "image": "<%- get_thumbnail(pg, config, theme) %>",
-    "dateModified": "<%- date(pg.modified || pg.date, 'YYYY-MM-DD HH:mm:ss') %>",
+    "dateModified": "<%- get_date_modified(pg) %>",
     "@context": "http://schema.org",
     "@type": "Article"
   }

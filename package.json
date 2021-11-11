@@ -13,12 +13,14 @@
     "@types/hexo": "^3.8.7"
   },
   "dependencies": {
-    "fast-json-stable-stringify": "^2.1.0",
+    "fast-json-stable-stringify": "file:packages/fast-json-stable-stringify",
     "hexo-fs": "^3.1.0",
     "hexo-log": "^3.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
+    "object-assign": "^4.1.1",
     "prettier": "^2.4.1",
+    "underscore": "^1.13.1",
     "yaml": "^1.10.2"
   }
 }

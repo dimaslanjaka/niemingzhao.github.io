@@ -1,18 +1,12 @@
 <% if (page.photos && page.photos.length) { %> <%- css(theme.gallery.fancybox_css) %>
-<article
-  class="mdui-row-xs-2 mdui-row-sm-3 mdui-row-md-4 mdui-row-lg-5 mdui-row-xl-6 mdui-grid-list"
-  style="margin: 0 auto"
->
+<article class="mdui-row-xs-2 mdui-row-sm-3 mdui-row-md-4 mdui-row-lg-5 mdui-row-xl-6 mdui-grid-list"
+  style="margin: 0 auto">
   <% page.photos.forEach(function (photo) { %>
   <div class="mdui-col">
     <div class="mdui-grid-tile mdui-hoverable">
       <a data-fancybox="gallery" href="<%- url_for(photo) %>">
-        <img
-          src="/images/grey.png"
-          class="lazyload"
-          data-original="<%- url_for(photo) %>"
-          style="height: 160px; border-radius: 2px"
-        />
+        <img src="/images/grey.png" class="lazyload" data-original="<%- url_for(photo) %>"
+          style="height: 160px; border-radius: 2px" />
       </a>
     </div>
   </div>
@@ -120,11 +114,9 @@
   <% if (post.year && post.year !== year) { %> <% year = post.year %>
   <h2><%= year %></h2>
   <% } %>
-  <a href="<%- url_for(post.link || post.path) %>" <% if (post.link) { %>
-    target="_blank" <% } %>>
+  <a href="<%- url_for(post.link || post.path) %>" <% if (post.link) { %> target="_blank" <% } %>>
     <span><%= date(post.date, 'MM-DD') %></span>
-    <span
-      ><%= post.title %> <% if (post.sticky || post.top) { %><i class="mdui-icon material-icons">fiber_pin</i>
+    <span><%= post.title %> <% if (post.sticky || post.top) { %><i class="mdui-icon material-icons">fiber_pin</i>
       <% } %>
     </span>
   </a>
@@ -165,17 +157,15 @@
   <header class="mdui-card-media">
     <img
       src="<%- page.thumbnail || page.cover || '/images/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png' %>"
-      style="max-height: 240px"
-    />
+      style="max-height: 240px" />
     <div class="mdui-card-media-covered">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title"><%= page.title %></div>
         <div class="mdui-card-primary-subtitle">
           <i class="iconfont">&#xe697;</i> <%- date(page.date) %> / <i class="iconfont">&#xe601;</i> <%=
           get_author_name(page, config) %> <% if (theme.busuanzi.page) { %> &nbsp;&nbsp;
-          <span id="busuanzi_container_page_pv" style="display: none"
-            ><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span
-          ></span>
+          <span id="busuanzi_container_page_pv" style="display: none"><i class="iconfont">&#xe7fd;</i> <span
+              id="busuanzi_value_page_pv"></span></span>
           <% } %>
         </div>
       </div>
@@ -194,8 +184,7 @@
           <img src="<%- qrcode(page.permalink, {margin: 2}) %>" />
           <% } else { %>
           <img
-            src="<% if (page.lang === 'zh-CN') { %>http://qr.liantu.com/api.php?w=246&m=10&text=<%- page.permalink %><% } else { %>https://chart.googleapis.com/chart?cht=qr&chs=246x246&chl=<%- page.permalink %>&chld=M|2<% } %>"
-          />
+            src="<% if (page.lang === 'zh-CN') { %>http://qr.liantu.com/api.php?w=246&m=10&text=<%- page.permalink %><% } else { %>https://chart.googleapis.com/chart?cht=qr&chs=246x246&chl=<%- page.permalink %>&chld=M|2<% } %>" />
           <% } %>
         </li>
       </ul>
@@ -205,57 +194,32 @@
       </button>
       <ul class="mdui-menu" id="share_menu">
         <li class="mdui-menu-item">
-          <a
-            href="http://service.weibo.com/share/share.php?appkey=&title=<%= page.title %>&url=<%- page.permalink %>&pic=<%- config.url + url_for(theme.favicon) %>&searchPic=false&style=simple"
-            target="_blank"
-            class="mdui-ripple"
-            ><%= __('share.weibo') %></a
-          >
+          <a href="http://service.weibo.com/share/share.php?appkey=&title=<%= page.title %>&url=<%- page.permalink %>&pic=<%- config.url + url_for(theme.favicon) %>&searchPic=false&style=simple"
+            target="_blank" class="mdui-ripple"><%= __('share.weibo') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a
-            href="https://twitter.com/intent/tweet?text=<%= page.title %>&url=<%- page.permalink %>&via=<%= config.author %>"
-            target="_blank"
-            class="mdui-ripple"
-            ><%= __('share.twitter') %></a
-          >
+          <a href="https://twitter.com/intent/tweet?text=<%= page.title %>&url=<%- page.permalink %>&via=<%= config.author %>"
+            target="_blank" class="mdui-ripple"><%= __('share.twitter') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a
-            href="https://www.facebook.com/sharer/sharer.php?u=<%- page.permalink %>"
-            target="_blank"
-            class="mdui-ripple"
-            ><%= __('share.facebook') %></a
-          >
+          <a href="https://www.facebook.com/sharer/sharer.php?u=<%- page.permalink %>" target="_blank"
+            class="mdui-ripple"><%= __('share.facebook') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://plus.google.com/share?url=<%- page.permalink %>" target="_blank" class="mdui-ripple"
-            ><%= __('share.google_plus') %></a
-          >
+          <a href="https://plus.google.com/share?url=<%- page.permalink %>" target="_blank"
+            class="mdui-ripple"><%= __('share.google_plus') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a
-            href="https://www.linkedin.com/shareArticle?mini=true&url=<%- page.permalink %>&title=<%= page.title %>"
-            target="_blank"
-            class="mdui-ripple"
-            ><%= __('share.linkedin') %></a
-          >
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%- page.permalink %>&title=<%= page.title %>"
+            target="_blank" class="mdui-ripple"><%= __('share.linkedin') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a
-            href="http://connect.qq.com/widget/shareqq/index.html?site=<%= config.title %>&title=<%= page.title %>&pics=<%- config.url + url_for(theme.favicon) %>&url=<%- page.permalink %>"
-            target="_blank"
-            class="mdui-ripple"
-            ><%= __('share.qq') %></a
-          >
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=<%= config.title %>&title=<%= page.title %>&pics=<%- config.url + url_for(theme.favicon) %>&url=<%- page.permalink %>"
+            target="_blank" class="mdui-ripple"><%= __('share.qq') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a
-            href="https://telegram.me/share/url?url=<%- page.permalink %>&text=<%= page.title %>"
-            target="_blank"
-            class="mdui-ripple"
-            ><%= __('share.telegram') %></a
-          >
+          <a href="https://telegram.me/share/url?url=<%- page.permalink %>&text=<%= page.title %>" target="_blank"
+            class="mdui-ripple"><%= __('share.telegram') %></a>
         </li>
       </ul>
       <% } %>
@@ -264,22 +228,19 @@
   <div class="mdui-card-content mdui-typo">
     <%- page.content %> <% if (is_post() && page.donate !== false && theme.donate && theme.donate.length) { %>
     <div class="mdui-m-y-2 mdui-text-center">
-      <button
-        class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple"
-        mdui-dialog="{target: '#donate'}"
-        mdui-tooltip="{content: '<%= __('donate') %>', position: 'top'}"
-      >
+      <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple"
+        mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '<%= __('donate') %>', position: 'top'}">
         <i class="mdui-icon material-icons">thumb_up</i>
       </button>
     </div>
     <% } %>
     <blockquote>
       <% if (page.license) { %>
-      <strong><%- page.license %></strong><br />
+      <strong><%- page.license %></strong>
       <% } else if (theme.license && page.license !== false) { %>
-      <strong><%- theme.license %></strong><br />
+      <strong><%- theme.license %></strong>
       <% } %>
-      <strong><%= __('permalink') %></strong><br /><a href="<%- page.permalink %>"><%- decodeURI(page.permalink) %></a>
+      <strong><%= __('permalink') %></strong> <a href="<%- page.permalink %>"><%- decodeURI(page.permalink) %></a>
     </blockquote>
   </div>
   <footer class="mdui-card-actions">

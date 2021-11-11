@@ -1,14 +1,14 @@
 <script type="application/ld+json">
   {
     "author": {
-      "url": "<%- page.author.url || page.url %>",
+      "url": "<%- get_author_url(page) || config.url %>",
       "name": "<%= get_author_name(page, config) %>",
       "@context": "http://schema.org",
       "@type": "Person"
     },
     "headline": "<%- page.title %>",
     "publisher": {
-      "url": "<%- page.author.url || page.url %>",
+      "url": "<%- get_author_url(page) || config.url %>",
       "name": "<%= get_author_name(page, config) %>",
       "@context": "http://schema.org",
       "@type": "Person"
