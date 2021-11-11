@@ -2,7 +2,6 @@
 
 "use strict";
 const _ = require("lodash");
-const stringify = require("fast-json-stable-stringify");
 const fs = require("fs");
 const assign = require("object-assign");
 const path = require("path");
@@ -184,27 +183,6 @@ hexo.extend.helper.register("get_author_name", function (page, config, theme) {
   if (typeof find == "string" && find.trim().length > 0) return find;
   return "Unknown Author";
 });
-
-hexo.extend.helper.register("json_encode", function (obj) {
-  return stringify(obj);
-});
-
-hexo.extend.helper.register(
-  "escape_with_json",
-  /**
-   *
-   * @param {any} str
-   * @returns
-   */
-  function (str) {
-    let json = JSON.stringify(str);
-    if (typeof str == "string") {
-      return json;
-    } else {
-      return str;
-    }
-  }
-);
 
 hexo.extend.helper.register("get_date_modified", function (page) {
   if (typeof page.modified == "string") {

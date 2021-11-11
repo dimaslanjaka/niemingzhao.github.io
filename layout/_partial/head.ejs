@@ -61,7 +61,4 @@
   (theme.analytics.baidu_site_id) { %><%- partial('_widget/analytics/baidu-analytics') %><% } %> <% if
   (theme.analytics.cnzz_site_id) { %><%- partial('_widget/analytics/cnzz-analytics') %><% } %> <%- css(['css/mdui',
   'css/style']) %> <%- css('custom') %>
-
-  <!-- schema started -->
-  <% if (is_page()) { %><%- partial('_widget/schema/page') %><% } else if (is_post()){ %><%- partial('_widget/schema/post') %><% } %>
 </head>

@@ -22,7 +22,7 @@ writefile("post.json", pg);*/
       "@context": "http://schema.org",
       "@type": "Person"
     },
-    "description": "<%= pg.subtitle %>, <%= pg.excerpt %>, <%= pg.title %>, <%= config.title %>",
+    "description": "<%= JSON.stringify(pg.subtitle) %>, <%= JSON.stringify(pg.excerpt) %>, <%= pg.title %>, <%= config.title %>",
     "datePublished": "<%= date(pg.date, 'YYYY-MM-DD HH:mm:ss') %>",
     "image": "<%- get_thumbnail(pg, config, theme) %>",
     "dateModified": "<%- get_date_modified(pg) %>",
