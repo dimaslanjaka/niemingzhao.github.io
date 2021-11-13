@@ -124,16 +124,20 @@ hexo.extend.helper.register("get_thumbnail", function (post) {
  * @returns
  */
 const get_author = function (pageConf) {
-  const author = assign(pageConf.author, {
-    name: null,
-    url: null,
-  });
+  const author = assign(
+    {
+      name: null,
+      url: null,
+    },
+    pageConf.author || {}
+  );
   if (typeof pageConf.author == "string") {
     author.name = pageConf.author;
   }
   if (typeof author == "object") {
-    if (typeof pageConf.author.link == "string") {
-      author.url = pageConf.author.link;
+    if (typeof pageConf.author == "object") {
+      if (typeof typeof pageConf.author.url == "string") author.url = pageConf.author.url;
+      if (typeof typeof pageConf.author.link == "string") author.url = pageConf.author.link;
     }
     if (typeof author.nick == "string") {
       author.name = author.nick;
