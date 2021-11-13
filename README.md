@@ -176,3 +176,6 @@ layout: custom  # Make the page available for custom styles.
 > `Fancybox`: Set the `fancybox` class on the `<img>` tag in the post to enable the picture to popup, and the `center-block` class to center the picture.
 
 **Recommended**: This theme works better with the parser [`hexo-renderer-markdown`](https://github.com/niemingzhao/hexo-renderer-markdown).
+
+### Sites with this theme
+- https://webmanajemen.com ( https://dimaslanjaka.github.io )
