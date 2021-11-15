@@ -236,11 +236,14 @@
     <% } %>
     <blockquote>
       <% if (page.license) { %>
-      <strong><%- page.license %></strong>
+      <strong><%- page.license %></strong> <br>
       <% } else if (theme.license && page.license !== false) { %>
-      <strong><%- theme.license %></strong>
+      <strong><%- theme.license %></strong> <br>
       <% } %>
       <strong><%= __('permalink') %></strong> <a href="<%- page.permalink %>"><%- decodeURI(page.permalink) %></a>
+      <hr>
+      <a href="https://search.google.com/test/rich-results?url=<%- encodeURIComponent(page.permalink) %>"
+        rel="nofollow"><i>Rich Snippets</i></a>
     </blockquote>
   </div>
   <footer class="mdui-card-actions">
