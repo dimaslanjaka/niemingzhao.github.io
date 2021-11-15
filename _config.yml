@@ -33,7 +33,7 @@ site_verification:
   google:
   baidu:
 analytics:
-  google_site_id: UA-106238155-1
+  google_site_id: ["UA-106238155-1", "G-BG75CLNJZ1"]
   baidu_site_id:
   cnzz_site_id:
 
