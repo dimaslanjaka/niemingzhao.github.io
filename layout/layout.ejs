@@ -17,7 +17,7 @@
   <script async src="<%- theme.busuanzi.busuanzi_js %>"></script><% } %>
   <%- js(['js/mdui', 'js/script']) %>
   <%- js('custom') %>
-  <% if (config.highlight && config.highlight.hljs) { %>
+  <% if (config.highlight && config.highlight.hljs && !config.highlight.wrap) { %>
   <%- js('//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js') %>
   <script>hljs.highlightAll();</script>
   <% } %>
