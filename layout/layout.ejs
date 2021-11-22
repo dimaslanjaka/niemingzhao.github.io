@@ -17,9 +17,10 @@
   <script async src="<%- theme.busuanzi.busuanzi_js %>"></script><% } %>
   <%- js(['js/mdui', 'js/script']) %>
   <%- js('custom') %>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <% if (config.highlight && config.highlight.hljs) { %>
+  <%- js('//cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js') %>
+  <script>hljs.highlightAll();</script>
+  <% } %>
 </body>
 
 </html>

@@ -58,8 +58,13 @@
   <meta name="google-site-verification" content="<%= theme.site_verification.google %>" />
   <% } %> <% if (theme.site_verification.baidu) { %>
   <meta name="baidu-site-verification" content="<%= theme.site_verification.baidu %>" />
-  <% } %> <% if (theme.analytics.google_site_id) { %><%- partial('_widget/analytics/google-analytics') %><% } %> <% if
-  (theme.analytics.baidu_site_id) { %><%- partial('_widget/analytics/baidu-analytics') %><% } %> <% if
-  (theme.analytics.cnzz_site_id) { %><%- partial('_widget/analytics/cnzz-analytics') %><% } %> <%- css(['css/mdui',
-  'css/style']) %> <%- css('custom') %>
+  <% } %> <% if (theme.analytics.google_site_id) { %><%- partial('_widget/analytics/google-analytics') %><% } %>
+  <% if (theme.analytics.baidu_site_id) { %><%- partial('_widget/analytics/baidu-analytics') %><% } %>
+  <% if (theme.analytics.cnzz_site_id) { %><%- partial('_widget/analytics/cnzz-analytics') %><% } %>
+  <%- css(['css/mdui', 'css/style']) %>
+  <%- css('custom') %>
+  <%- css('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css') %>
+  <%- css('https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css') %>
+  <% if (config.highlight && config.highlight.hljs) { %>
+  <%- css('//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css') %> <% } %>
 </head>
