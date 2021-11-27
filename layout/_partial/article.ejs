@@ -243,7 +243,8 @@
       <strong><%= __('permalink') %></strong> <a href="<%- page.permalink %>"><%- decodeURI(page.permalink) %></a>
       <hr>
       <a href="https://search.google.com/test/rich-results?url=<%- encodeURIComponent(page.permalink) %>"
-        rel="nofollow"><i>Rich Snippets</i></a>
+        rel="nofollow"><i>Google Rich Snippets</i></a> <a
+        href="https://validator.schema.org/#url=<%- encodeURIComponent(page.permalink) %>">Schema Markup Validator</a>
     </blockquote>
   </div>
   <footer class="mdui-card-actions">
