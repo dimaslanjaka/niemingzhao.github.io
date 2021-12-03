@@ -240,10 +240,11 @@
       <% } else if (theme.license && page.license !== false) { %>
       <strong><%- theme.license %></strong> <br>
       <% } %>
+      <h1 style="font-size:0.9em"><%- page.title || config.title %></h1>
       <strong><%= __('permalink') %></strong> <a href="<%- page.permalink %>"><%- decodeURI(page.permalink) %></a>
       <hr>
       <a href="https://search.google.com/test/rich-results?url=<%- encodeURIComponent(page.permalink) %>"
-        rel="nofollow"><i>Google Rich Snippets</i></a> <a
+        rel="nofollow"><i>Google Rich Snippets</i></a> | <a
         href="https://validator.schema.org/#url=<%- encodeURIComponent(page.permalink) %>">Schema Markup Validator</a>
     </blockquote>
   </div>
