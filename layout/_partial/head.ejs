@@ -33,7 +33,7 @@
   theme.open_graph.google_plus, fb_admins: theme.open_graph.fb_admins, fb_app_id: theme.open_graph.fb_app_id, author: get_author_name(page, config, theme)}) %>
 
   <meta name="keywords"
-    content="<% if (page.tags && page.tags.each) { page.tags.each(function (tag) { %><%= ',' + tag.name %><% })} else if (config.keywords) { %><%= config.keywords %><% } %>" />
+    content="<% if (page.keywords){ if (Array.isArray(page.keywords)) { %><%= page.keywords.join(",") %><% } else if (typeof page.keywords == 'string') { %><%= page.keywords %><% } } else if (page.tags && page.tags.each) { page.tags.each(function (tag) { %><%= ',' + tag.name %><% })} else if (config.keywords) { %><%= config.keywords %><% } %>" />
   <meta name="format-detection" content="telephone=no,email=no" />
   <meta name="theme-color" content="#9C27B0" />
 
