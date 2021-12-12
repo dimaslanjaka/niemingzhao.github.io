@@ -1,6 +1,7 @@
+# https://www.mdui.org/docs/color
 theme_color:
-  primary: indigo
-  accent: pink
+  primary: lime
+  accent: teal
 
 notice:
 
