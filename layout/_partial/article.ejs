@@ -247,7 +247,7 @@
         <h5>Incoming search terms:</h5>
         <ul>
           <li><%- page.title %></li>
-          <li><%- page.title %><% if (page.webtitle){ %> <%- page.webtitle %><% } %></li>
+          <% if (page.webtitle){ %> <li><%- page.title %> <%- page.webtitle %></li><% } %>
         </ul>
       </small>
       <hr>
