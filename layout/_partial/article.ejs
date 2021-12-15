@@ -243,11 +243,41 @@
       <% } %>
       <strong><%= __('permalink') %></strong> <a href="<%- page.permalink %>"><%- decodeURI(page.permalink) %></a>
       <hr>
-      <small>
-        <h5>Incoming search terms:</h5>
+      <style>
+        #incoming-terms * {
+          font-size: 10px;
+          /*margin: 5px;*/
+        }
+
+        #incoming-terms li:after {
+          content: " | ";
+        }
+
+        #incoming-terms li:last-child:after {
+          content: "";
+        }
+
+        #incoming-terms li {
+          display: inline;
+        }
+
+        #incoming-terms ul {
+          list-style-type: none;
+        }
+      </style>
+      <small id="incoming-terms" itemscope itemtype="https://schema.org/ItemList">
+        <link itemprop="itemListOrder" href="https://schema.org/ItemListOrderDescending" />
+        <h5 itemprop="name">Incoming search terms for <%- page.title %>:</h5>
         <ul>
           <li><%- page.title %></li>
           <% if (page.webtitle){ %> <li><%- page.title %> <%- page.webtitle %></li><% } %>
+          <% if (page.keywords) { %>
+          <% if (Array.isArray(page.keywords)) {
+            page.keywords.forEach((keyword)=> { %>
+          <li itemprop="itemListElement"><%- keyword.trim() %></li>
+          <% }); %>
+          <% } %>
+          <% } %>
         </ul>
       </small>
       <hr>
