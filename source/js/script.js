@@ -44,26 +44,45 @@ $$.fn.extend({
     }
   },
 });
+
+function mediaSupported() {
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+const preferDarkMode = function () {
+  return mediaSupported || localStorage.getItem("mdui-theme-layout-dark");
+};
+
+if (preferDarkMode()) {
+  document.body.classList.toggle("mdui-theme-layout-dark", true);
+}
+
+let changeWatcher = false;
 $$(function () {
   $$("#header").longPress(function (e) {
-    if (!window.matchMedia || !window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      if ($$("body").hasClass("mdui-theme-layout-dark")) {
-        $$("body").removeClass("mdui-theme-layout-dark");
+    if (!changeWatcher) {
+      changeWatcher = true;
+      // handle media change
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+        if (e.matches) {
+          document.body.classList.toggle("mdui-theme-layout-dark", true);
+          localStorage.setItem("mdui-theme-layout-dark", "true");
+        } else {
+          document.body.classList.toggle("mdui-theme-layout-dark", false);
+          localStorage.removeItem("mdui-theme-layout-dark");
+        }
+      });
+    }
+    if (!mediaSupported()) {
+      if (document.body.classList.contains("mdui-theme-layout-dark")) {
+        document.body.classList.remove("mdui-theme-layout-dark");
         localStorage.removeItem("mdui-theme-layout-dark");
       } else {
-        $$("body").addClass("mdui-theme-layout-dark");
-        localStorage.setItem("mdui-theme-layout-dark", true);
+        document.body.classList.add("mdui-theme-layout-dark");
+        localStorage.setItem("mdui-theme-layout-dark", "true");
       }
     }
   });
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
-    if (e.matches) {
-      $$("body").addClass("mdui-theme-layout-dark");
-    } else {
-      $$("body").removeClass("mdui-theme-layout-dark");
-    }
-    localStorage.removeItem("mdui-theme-layout-dark");
-  });
+
   var tab = new mdui.Tab("#donate .mdui-tab");
   $$("#donate").on("opened.mdui.dialog", function (e) {
     tab.handleUpdate();
