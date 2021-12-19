@@ -4,7 +4,7 @@ theme_color:
   accent: teal
 
 notice:
-
+# https://github.com/niemingzhao/niemingzhao.github.io/tree/theme
 favicon: /images/favicon.png
 banner: /images/banner.png
 avatar: /images/avatar.png
@@ -67,7 +67,7 @@ donate:
 search:
   placeholder: Insert The Keywords
   path: /search.xml
-  use: online
+  use: plugin
 comment:
   use: disqus
   disqus_shortname: dimaslanjaka

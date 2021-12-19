@@ -2,20 +2,20 @@ var $$ = mdui.$;
 
 /* Gotop */
 $$(function () {
-  $$(window).on('scroll', function (e) {
+  $$(window).on("scroll", function (e) {
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     if (scrollTop !== 0) {
-      $$('#gotop').removeClass('mdui-fab-hide');
+      $$("#gotop").removeClass("mdui-fab-hide");
     } else {
-      $$('#gotop').addClass('mdui-fab-hide');
+      $$("#gotop").addClass("mdui-fab-hide");
     }
   });
-  $$('#gotop').on('click', function (e) {
+  $$("#gotop").on("click", function (e) {
     (function animateScroll() {
       var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       if (scrollTop !== 0) {
         window.requestAnimationFrame(animateScroll);
-        window.scrollTo(0, scrollTop - (scrollTop / 5));
+        window.scrollTo(0, scrollTop - scrollTop / 5);
       }
     })();
   });
@@ -36,116 +36,139 @@ $$.fn.extend({
         var end = function (event) {
           clearTimeout(timeout);
         };
-        target.addEventListener('mousedown', start, false);
-        target.addEventListener('mouseup', end, false);
-        target.addEventListener('touchstart', start, false);
-        target.addEventListener('touchend', end, false);
+        target.addEventListener("mousedown", start, false);
+        target.addEventListener("mouseup", end, false);
+        target.addEventListener("touchstart", start, false);
+        target.addEventListener("touchend", end, false);
       })($this[i]);
     }
-  }
+  },
 });
 $$(function () {
-  $$('#header').longPress(function (e) {
-    if (!window.matchMedia || !window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      if ($$('body').hasClass('mdui-theme-layout-dark')) {
-        $$('body').removeClass('mdui-theme-layout-dark');
-        localStorage.removeItem('mdui-theme-layout-dark');
+  $$("#header").longPress(function (e) {
+    if (!window.matchMedia || !window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      if ($$("body").hasClass("mdui-theme-layout-dark")) {
+        $$("body").removeClass("mdui-theme-layout-dark");
+        localStorage.removeItem("mdui-theme-layout-dark");
       } else {
-        $$('body').addClass('mdui-theme-layout-dark');
-        localStorage.setItem('mdui-theme-layout-dark', true);
+        $$("body").addClass("mdui-theme-layout-dark");
+        localStorage.setItem("mdui-theme-layout-dark", true);
       }
     }
   });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
     if (e.matches) {
-      $$('body').addClass('mdui-theme-layout-dark');
+      $$("body").addClass("mdui-theme-layout-dark");
     } else {
-      $$('body').removeClass('mdui-theme-layout-dark');
+      $$("body").removeClass("mdui-theme-layout-dark");
     }
-    localStorage.removeItem('mdui-theme-layout-dark');
+    localStorage.removeItem("mdui-theme-layout-dark");
   });
-  var tab = new mdui.Tab('#donate .mdui-tab');
-  $$('#donate').on('opened.mdui.dialog', function (e) {
+  var tab = new mdui.Tab("#donate .mdui-tab");
+  $$("#donate").on("opened.mdui.dialog", function (e) {
     tab.handleUpdate();
   });
 });
 
 /* Drawer State */
 $$(function () {
-  $$('#sidebar').on('open.mdui.drawer', function (e) {
-    localStorage.removeItem('mdui-drawer-close');
+  $$("#sidebar").on("open.mdui.drawer", function (e) {
+    localStorage.removeItem("mdui-drawer-close");
   });
-  $$('#sidebar').on('close.mdui.drawer', function (e) {
-    localStorage.setItem('mdui-drawer-close', true);
+  $$("#sidebar").on("close.mdui.drawer", function (e) {
+    localStorage.setItem("mdui-drawer-close", true);
   });
 });
 
 /* Sidebar Collapse Item State */
 $$(function () {
-  $$('.mdui-collapse-item').eq(0).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-0');
-  });
-  $$('.mdui-collapse-item').eq(0).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-0', true);
-  });
-  $$('.mdui-collapse-item').eq(1).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-1');
-  });
-  $$('.mdui-collapse-item').eq(1).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-1', true);
-  });
-  $$('.mdui-collapse-item').eq(2).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-2');
-  });
-  $$('.mdui-collapse-item').eq(2).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-2', true);
-  });
-  $$('.mdui-collapse-item').eq(3).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-3');
-  });
-  $$('.mdui-collapse-item').eq(3).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-3', true);
-  });
+  $$(".mdui-collapse-item")
+    .eq(0)
+    .on("close.mdui.collapse", function (e) {
+      localStorage.removeItem("mdui-collapse-item-0");
+    });
+  $$(".mdui-collapse-item")
+    .eq(0)
+    .on("open.mdui.collapse", function (e) {
+      localStorage.setItem("mdui-collapse-item-0", true);
+    });
+  $$(".mdui-collapse-item")
+    .eq(1)
+    .on("close.mdui.collapse", function (e) {
+      localStorage.removeItem("mdui-collapse-item-1");
+    });
+  $$(".mdui-collapse-item")
+    .eq(1)
+    .on("open.mdui.collapse", function (e) {
+      localStorage.setItem("mdui-collapse-item-1", true);
+    });
+  $$(".mdui-collapse-item")
+    .eq(2)
+    .on("close.mdui.collapse", function (e) {
+      localStorage.removeItem("mdui-collapse-item-2");
+    });
+  $$(".mdui-collapse-item")
+    .eq(2)
+    .on("open.mdui.collapse", function (e) {
+      localStorage.setItem("mdui-collapse-item-2", true);
+    });
+  $$(".mdui-collapse-item")
+    .eq(3)
+    .on("close.mdui.collapse", function (e) {
+      localStorage.removeItem("mdui-collapse-item-3");
+    });
+  $$(".mdui-collapse-item")
+    .eq(3)
+    .on("open.mdui.collapse", function (e) {
+      localStorage.setItem("mdui-collapse-item-3", true);
+    });
 });
 
 /* Search */
 var searchFunc = function (path, search_id, content_id) {
   $$.ajax({
     url: path,
-    dataType: 'xml',
+    dataType: "xml",
     success: function (xmlResponse) {
-      var datas = $$(xmlResponse).map(function () {
-        return this.tagName === 'SEARCH' ? this : null;
-      }).find('entry').map(function () {
-        return {
-          title: $$(this).find('title').text(),
-          content: $$(this).find('content').text(),
-          url: $$(this).find('url').text()
-        };
-      }).get();
+      var datas = $$(xmlResponse)
+        .map(function () {
+          return this.tagName === "SEARCH" ? this : null;
+        })
+        .find("entry")
+        .map(function () {
+          return {
+            title: $$(this).find("title").text(),
+            content: $$(this).find("content").text(),
+            url: $$(this).find("url").text(),
+          };
+        })
+        .get();
       var $input = $$(search_id)[0];
       var $resultContent = $$(content_id)[0];
-      $input.addEventListener('input', function () {
+      $input.addEventListener("input", function () {
         var str = '<ul class="search-result-list">';
-        var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-        $resultContent.innerHTML = '';
+        var keywords = this.value
+          .trim()
+          .toLowerCase()
+          .split(/[\s\-]+/);
+        $resultContent.innerHTML = "";
         if (this.value.trim().length <= 0) {
           return;
         }
         datas.forEach(function (data) {
           var isMatch = true;
-          if (!data.title || data.title.trim() === '') {
-            data.title = 'Untitled';
+          if (!data.title || data.title.trim() === "") {
+            data.title = "Untitled";
           }
           var orig_data_title = data.title.trim();
           var data_title = orig_data_title.toLowerCase();
-          var orig_data_content = data.content.trim().replace(/<[^>]+>/g, '');
+          var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
           var data_content = orig_data_content.toLowerCase();
           var data_url = data.url;
           var index_title = -1;
           var index_content = -1;
           var first_occur = -1;
-          if (data_content !== '') {
+          if (data_content !== "") {
             keywords.forEach(function (keyword, i) {
               index_title = data_title.indexOf(keyword);
               index_content = data_content.indexOf(keyword);
@@ -164,7 +187,8 @@ var searchFunc = function (path, search_id, content_id) {
             isMatch = false;
           }
           if (isMatch) {
-            str += '<li><a href="' + data_url + '" class="search-result-title" target="_blank">' + orig_data_title + '</a>';
+            str +=
+              '<li><a href="' + data_url + '" class="search-result-title" target="_blank">' + orig_data_title + "</a>";
             var content = orig_data_content;
             if (first_occur >= 0) {
               var start = first_occur - 20;
@@ -180,39 +204,87 @@ var searchFunc = function (path, search_id, content_id) {
               }
               var match_content = content.substr(start, end);
               keywords.forEach(function (keyword) {
-                var regS = new RegExp(keyword, 'gi');
+                var regS = new RegExp(keyword, "gi");
                 match_content = match_content.replace(regS, '<em class="search-result-keyword">$&</em>');
               });
-              str += '<p class="search-result-content">' + match_content + '...</p>';
+              str += '<p class="search-result-content">' + match_content + "...</p>";
             }
-            str += '</li>';
+            str += "</li>";
           }
         });
-        str += '</ul>';
+        str += "</ul>";
         $resultContent.innerHTML = str;
       });
-    }
+    },
   });
 };
 $$(function () {
-  var ele = $$('#search .search-form-input')[0];
-  $$('#search').on('opened.mdui.dialog', function (e) {
+  var ele = $$("#search .search-form-input")[0];
+  $$("#search").on("opened.mdui.dialog", function (e) {
     ele.focus();
   });
-  $$(document).on('click', function (e) {
-    if ($$(e.target).closest('#search').length <= 0) {
-      $$('.search-form-input').val('');
-      $$('.search-result').html('');
+  $$(document).on("click", function (e) {
+    if ($$(e.target).closest("#search").length <= 0) {
+      $$(".search-form-input").val("");
+      $$(".search-result").html("");
     }
   });
-  var resource = $$('.search-result').attr('data-resource');
-  if (resource) searchFunc(resource, '.search-form-input', '.search-result');
+  var resource = $$(".search-result").attr("data-resource");
+  if (resource) searchFunc(resource, ".search-form-input", ".search-result");
 });
 
 /* Pace */
 /*! pace 1.0.0 */
 (function () {
-  var AjaxMonitor, Bar, DocumentMonitor, ElementMonitor, ElementTracker, EventLagMonitor, Evented, Events, NoTargetError, Pace, RequestIntercept, SOURCE_KEYS, Scaler, SocketRequestTracker, XHRRequestTracker, animation, avgAmplitude, bar, cancelAnimation, cancelAnimationFrame, defaultOptions, extend, extendNative, getFromDOM, getIntercept, handlePushState, ignoreStack, init, now, options, requestAnimationFrame, result, runAnimation, scalers, shouldIgnoreURL, shouldTrack, source, sources, uniScaler, _WebSocket, _XDomainRequest, _XMLHttpRequest, _i, _intercept, _len, _pushState, _ref, _ref1, _replaceState,
+  var AjaxMonitor,
+    Bar,
+    DocumentMonitor,
+    ElementMonitor,
+    ElementTracker,
+    EventLagMonitor,
+    Evented,
+    Events,
+    NoTargetError,
+    Pace,
+    RequestIntercept,
+    SOURCE_KEYS,
+    Scaler,
+    SocketRequestTracker,
+    XHRRequestTracker,
+    animation,
+    avgAmplitude,
+    bar,
+    cancelAnimation,
+    cancelAnimationFrame,
+    defaultOptions,
+    extend,
+    extendNative,
+    getFromDOM,
+    getIntercept,
+    handlePushState,
+    ignoreStack,
+    init,
+    now,
+    options,
+    requestAnimationFrame,
+    result,
+    runAnimation,
+    scalers,
+    shouldIgnoreURL,
+    shouldTrack,
+    source,
+    sources,
+    uniScaler,
+    _WebSocket,
+    _XDomainRequest,
+    _XMLHttpRequest,
+    _i,
+    _intercept,
+    _len,
+    _pushState,
+    _ref,
+    _ref1,
+    _replaceState,
     __slice = [].slice,
     __hasProp = {}.hasOwnProperty,
     __extends = function (child, parent) {
@@ -228,16 +300,18 @@ $$(function () {
       child.__super__ = parent.prototype;
       return child;
     },
-    __indexOf = [].indexOf || function (item) {
-      for (var i = 0, l = this.length; i < l; i++) {
-        if (i in this && this[i] === item) return i;
-      }
-      return -1;
-    };
+    __indexOf =
+      [].indexOf ||
+      function (item) {
+        for (var i = 0, l = this.length; i < l; i++) {
+          if (i in this && this[i] === item) return i;
+        }
+        return -1;
+      };
 
   defaultOptions = {
     catchupTime: 100,
-    initialRate: .03,
+    initialRate: 0.03,
     minTime: 250,
     ghostTime: 100,
     maxProgressPerFrame: 20,
@@ -245,29 +319,40 @@ $$(function () {
     startOnPageLoad: true,
     restartOnPushState: true,
     restartOnRequestAfter: 500,
-    target: 'body',
+    target: "body",
     elements: {
       checkInterval: 100,
-      selectors: ['body']
+      selectors: ["body"],
     },
     eventLag: {
       minSamples: 10,
       sampleCount: 3,
-      lagThreshold: 3
+      lagThreshold: 3,
     },
     ajax: {
-      trackMethods: ['GET'],
+      trackMethods: ["GET"],
       trackWebSockets: true,
-      ignoreURLs: []
-    }
+      ignoreURLs: [],
+    },
   };
 
   now = function () {
     var _ref;
-    return (_ref = typeof performance !== "undefined" && performance !== null ? typeof performance.now === "function" ? performance.now() : void 0 : void 0) != null ? _ref : +(new Date);
+    return (_ref =
+      typeof performance !== "undefined" && performance !== null
+        ? typeof performance.now === "function"
+          ? performance.now()
+          : void 0
+        : void 0) != null
+      ? _ref
+      : +new Date();
   };
 
-  requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+  requestAnimationFrame =
+    window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
 
   cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
@@ -300,8 +385,8 @@ $$(function () {
 
   result = function () {
     var args, key, obj;
-    obj = arguments[0], key = arguments[1], args = 3 <= arguments.length ? __slice.call(arguments, 2) : [];
-    if (typeof obj[key] === 'function') {
+    (obj = arguments[0]), (key = arguments[1]), (args = 3 <= arguments.length ? __slice.call(arguments, 2) : []);
+    if (typeof obj[key] === "function") {
       return obj[key].apply(obj, args);
     } else {
       return obj[key];
@@ -310,14 +395,14 @@ $$(function () {
 
   extend = function () {
     var key, out, source, sources, val, _i, _len;
-    out = arguments[0], sources = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+    (out = arguments[0]), (sources = 2 <= arguments.length ? __slice.call(arguments, 1) : []);
     for (_i = 0, _len = sources.length; _i < _len; _i++) {
       source = sources[_i];
       if (source) {
         for (key in source) {
           if (!__hasProp.call(source, key)) continue;
           val = source[key];
-          if ((out[key] != null) && typeof out[key] === 'object' && (val != null) && typeof val === 'object') {
+          if (out[key] != null && typeof out[key] === "object" && val != null && typeof val === "object") {
             extend(out[key], val);
           } else {
             out[key] = val;
@@ -342,7 +427,7 @@ $$(function () {
   getFromDOM = function (key, json) {
     var data, e, el;
     if (key == null) {
-      key = 'options';
+      key = "options";
     }
     if (json == null) {
       json = true;
@@ -359,7 +444,9 @@ $$(function () {
       return JSON.parse(data);
     } catch (_error) {
       e = _error;
-      return typeof console !== "undefined" && console !== null ? console.error("Error parsing inline pace options", e) : void 0;
+      return typeof console !== "undefined" && console !== null
+        ? console.error("Error parsing inline pace options", e)
+        : void 0;
     }
   };
 
@@ -380,7 +467,7 @@ $$(function () {
       return this.bindings[event].push({
         handler: handler,
         ctx: ctx,
-        once: once
+        once: once,
       });
     };
 
@@ -411,12 +498,12 @@ $$(function () {
 
     Evented.prototype.trigger = function () {
       var args, ctx, event, handler, i, once, _ref, _ref1, _results;
-      event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      (event = arguments[0]), (args = 2 <= arguments.length ? __slice.call(arguments, 1) : []);
       if ((_ref = this.bindings) != null ? _ref[event] : void 0) {
         i = 0;
         _results = [];
         while (i < this.bindings[event].length) {
-          _ref1 = this.bindings[event][i], handler = _ref1.handler, ctx = _ref1.ctx, once = _ref1.once;
+          (_ref1 = this.bindings[event][i]), (handler = _ref1.handler), (ctx = _ref1.ctx), (once = _ref1.once);
           handler.apply(ctx != null ? ctx : this, args);
           if (once) {
             _results.push(this.bindings[event].splice(i, 1));
@@ -429,7 +516,6 @@ $$(function () {
     };
 
     return Evented;
-
   })();
 
   Pace = window.Pace || {};
@@ -440,7 +526,7 @@ $$(function () {
 
   options = Pace.options = extend({}, defaultOptions, window.paceOptions, getFromDOM());
 
-  _ref = ['ajax', 'document', 'eventLag', 'elements'];
+  _ref = ["ajax", "document", "eventLag", "elements"];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     source = _ref[_i];
     if (options[source] === true) {
@@ -457,7 +543,6 @@ $$(function () {
     }
 
     return NoTargetError;
-
   })(Error);
 
   Bar = (function () {
@@ -470,13 +555,14 @@ $$(function () {
       if (this.el == null) {
         targetElement = document.querySelector(options.target);
         if (!targetElement) {
-          throw new NoTargetError;
+          throw new NoTargetError();
         }
-        this.el = document.createElement('div');
+        this.el = document.createElement("div");
         this.el.className = "pace pace-active";
-        document.body.className = document.body.className.replace(/pace-done/g, '');
-        document.body.className += ' pace-running';
-        this.el.innerHTML = '<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>';
+        document.body.className = document.body.className.replace(/pace-done/g, "");
+        document.body.className += " pace-running";
+        this.el.innerHTML =
+          '<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>';
         if (targetElement.firstChild != null) {
           targetElement.insertBefore(this.el, targetElement.firstChild);
         } else {
@@ -489,10 +575,10 @@ $$(function () {
     Bar.prototype.finish = function () {
       var el;
       el = this.getElement();
-      el.className = el.className.replace('pace-active', '');
-      el.className += ' pace-inactive';
-      document.body.className = document.body.className.replace('pace-running', '');
-      return document.body.className += ' pace-done';
+      el.className = el.className.replace("pace-active", "");
+      el.className += " pace-inactive";
+      document.body.className = document.body.className.replace("pace-running", "");
+      return (document.body.className += " pace-done");
     };
 
     Bar.prototype.update = function (prog) {
@@ -506,7 +592,7 @@ $$(function () {
       } catch (_error) {
         NoTargetError = _error;
       }
-      return this.el = void 0;
+      return (this.el = void 0);
     };
 
     Bar.prototype.render = function () {
@@ -516,22 +602,22 @@ $$(function () {
       }
       el = this.getElement();
       transform = "translate3d(" + this.progress + "%, 0, 0)";
-      _ref2 = ['webkitTransform', 'msTransform', 'transform'];
+      _ref2 = ["webkitTransform", "msTransform", "transform"];
       for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
         key = _ref2[_j];
         el.children[0].style[key] = transform;
       }
-      if (!this.lastRenderedProgress || this.lastRenderedProgress | 0 !== this.progress | 0) {
-        el.children[0].setAttribute('data-progress-text', "" + (this.progress | 0) + "%");
+      if (!this.lastRenderedProgress || this.lastRenderedProgress | (0 !== this.progress) | 0) {
+        el.children[0].setAttribute("data-progress-text", "" + (this.progress | 0) + "%");
         if (this.progress >= 100) {
-          progressStr = '99';
+          progressStr = "99";
         } else {
           progressStr = this.progress < 10 ? "0" : "";
           progressStr += this.progress | 0;
         }
-        el.children[0].setAttribute('data-progress', "" + progressStr);
+        el.children[0].setAttribute("data-progress", "" + progressStr);
       }
-      return this.lastRenderedProgress = this.progress;
+      return (this.lastRenderedProgress = this.progress);
     };
 
     Bar.prototype.done = function () {
@@ -539,7 +625,6 @@ $$(function () {
     };
 
     return Bar;
-
   })();
 
   Events = (function () {
@@ -569,7 +654,6 @@ $$(function () {
     };
 
     return Events;
-
   })();
 
   _XMLHttpRequest = window.XMLHttpRequest;
@@ -584,8 +668,8 @@ $$(function () {
     for (key in from.prototype) {
       try {
         val = from.prototype[key];
-        if ((to[key] == null) && typeof val !== 'function') {
-          _results.push(to[key] = val);
+        if (to[key] == null && typeof val !== "function") {
+          _results.push((to[key] = val));
         } else {
           _results.push(void 0);
         }
@@ -600,8 +684,8 @@ $$(function () {
 
   Pace.ignore = function () {
     var args, fn, ret;
-    fn = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-    ignoreStack.unshift('ignore');
+    (fn = arguments[0]), (args = 2 <= arguments.length ? __slice.call(arguments, 1) : []);
+    ignoreStack.unshift("ignore");
     ret = fn.apply(null, args);
     ignoreStack.shift();
     return ret;
@@ -609,8 +693,8 @@ $$(function () {
 
   Pace.track = function () {
     var args, fn, ret;
-    fn = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-    ignoreStack.unshift('track');
+    (fn = arguments[0]), (args = 2 <= arguments.length ? __slice.call(arguments, 1) : []);
+    ignoreStack.unshift("track");
     ret = fn.apply(null, args);
     ignoreStack.shift();
     return ret;
@@ -619,15 +703,15 @@ $$(function () {
   shouldTrack = function (method) {
     var _ref2;
     if (method == null) {
-      method = 'GET';
+      method = "GET";
     }
-    if (ignoreStack[0] === 'track') {
-      return 'force';
+    if (ignoreStack[0] === "track") {
+      return "force";
     }
     if (!ignoreStack.length && options.ajax) {
-      if (method === 'socket' && options.ajax.trackWebSockets) {
+      if (method === "socket" && options.ajax.trackWebSockets) {
         return true;
-      } else if (_ref2 = method.toUpperCase(), __indexOf.call(options.ajax.trackMethods, _ref2) >= 0) {
+      } else if (((_ref2 = method.toUpperCase()), __indexOf.call(options.ajax.trackMethods, _ref2) >= 0)) {
         return true;
       }
     }
@@ -644,16 +728,16 @@ $$(function () {
       monitorXHR = function (req) {
         var _open;
         _open = req.open;
-        return req.open = function (type, url, async) {
+        return (req.open = function (type, url, async) {
           if (shouldTrack(type)) {
-            _this.trigger('request', {
+            _this.trigger("request", {
               type: type,
               url: url,
-              request: req
+              request: req,
             });
           }
           return _open.apply(req, arguments);
-        };
+        });
       };
       window.XMLHttpRequest = function (flags) {
         var req;
@@ -667,7 +751,7 @@ $$(function () {
       if (_XDomainRequest != null) {
         window.XDomainRequest = function () {
           var req;
-          req = new _XDomainRequest;
+          req = new _XDomainRequest();
           monitorXHR(req);
           return req;
         };
@@ -675,7 +759,7 @@ $$(function () {
           extendNative(window.XDomainRequest, _XDomainRequest);
         } catch (_error) {}
       }
-      if ((_WebSocket != null) && options.ajax.trackWebSockets) {
+      if (_WebSocket != null && options.ajax.trackWebSockets) {
         window.WebSocket = function (url, protocols) {
           var req;
           if (protocols != null) {
@@ -683,12 +767,12 @@ $$(function () {
           } else {
             req = new _WebSocket(url);
           }
-          if (shouldTrack('socket')) {
-            _this.trigger('request', {
-              type: 'socket',
+          if (shouldTrack("socket")) {
+            _this.trigger("request", {
+              type: "socket",
               url: url,
               protocols: protocols,
-              request: req
+              request: req,
             });
           }
           return req;
@@ -700,14 +784,13 @@ $$(function () {
     }
 
     return RequestIntercept;
-
   })(Events);
 
   _intercept = null;
 
   getIntercept = function () {
     if (_intercept == null) {
-      _intercept = new RequestIntercept;
+      _intercept = new RequestIntercept();
     }
     return _intercept;
   };
@@ -717,7 +800,7 @@ $$(function () {
     _ref2 = options.ajax.ignoreURLs;
     for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
       pattern = _ref2[_j];
-      if (typeof pattern === 'string') {
+      if (typeof pattern === "string") {
         if (url.indexOf(pattern) !== -1) {
           return true;
         }
@@ -730,24 +813,24 @@ $$(function () {
     return false;
   };
 
-  getIntercept().on('request', function (_arg) {
+  getIntercept().on("request", function (_arg) {
     var after, args, request, type, url;
-    type = _arg.type, request = _arg.request, url = _arg.url;
+    (type = _arg.type), (request = _arg.request), (url = _arg.url);
     if (shouldIgnoreURL(url)) {
       return;
     }
-    if (!Pace.running && (options.restartOnRequestAfter !== false || shouldTrack(type) === 'force')) {
+    if (!Pace.running && (options.restartOnRequestAfter !== false || shouldTrack(type) === "force")) {
       args = arguments;
       after = options.restartOnRequestAfter || 0;
-      if (typeof after === 'boolean') {
+      if (typeof after === "boolean") {
         after = 0;
       }
       return setTimeout(function () {
         var stillActive, _j, _len1, _ref2, _ref3, _results;
-        if (type === 'socket') {
+        if (type === "socket") {
           stillActive = request.readyState < 2;
         } else {
-          stillActive = (0 < (_ref2 = request.readyState) && _ref2 < 4);
+          stillActive = 0 < (_ref2 = request.readyState) && _ref2 < 4;
         }
         if (stillActive) {
           Pace.restart();
@@ -772,18 +855,18 @@ $$(function () {
     function AjaxMonitor() {
       var _this = this;
       this.elements = [];
-      getIntercept().on('request', function () {
+      getIntercept().on("request", function () {
         return _this.watch.apply(_this, arguments);
       });
     }
 
     AjaxMonitor.prototype.watch = function (_arg) {
       var request, tracker, type, url;
-      type = _arg.type, request = _arg.request, url = _arg.url;
+      (type = _arg.type), (request = _arg.request), (url = _arg.url);
       if (shouldIgnoreURL(url)) {
         return;
       }
-      if (type === 'socket') {
+      if (type === "socket") {
         tracker = new SocketRequestTracker(request);
       } else {
         tracker = new XHRRequestTracker(request);
@@ -792,29 +875,41 @@ $$(function () {
     };
 
     return AjaxMonitor;
-
   })();
 
   XHRRequestTracker = (function () {
     function XHRRequestTracker(request) {
-      var event, size, _j, _len1, _onreadystatechange, _ref2,
+      var event,
+        size,
+        _j,
+        _len1,
+        _onreadystatechange,
+        _ref2,
         _this = this;
       this.progress = 0;
       if (window.ProgressEvent != null) {
         size = null;
-        request.addEventListener('progress', function (evt) {
-          if (evt.lengthComputable) {
-            return _this.progress = 100 * evt.loaded / evt.total;
-          } else {
-            return _this.progress = _this.progress + (100 - _this.progress) / 2;
-          }
-        }, false);
-        _ref2 = ['load', 'abort', 'timeout', 'error'];
+        request.addEventListener(
+          "progress",
+          function (evt) {
+            if (evt.lengthComputable) {
+              return (_this.progress = (100 * evt.loaded) / evt.total);
+            } else {
+              return (_this.progress = _this.progress + (100 - _this.progress) / 2);
+            }
+          },
+          false
+        );
+        _ref2 = ["load", "abort", "timeout", "error"];
         for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
           event = _ref2[_j];
-          request.addEventListener(event, function () {
-            return _this.progress = 100;
-          }, false);
+          request.addEventListener(
+            event,
+            function () {
+              return (_this.progress = 100);
+            },
+            false
+          );
         }
       } else {
         _onreadystatechange = request.onreadystatechange;
@@ -831,25 +926,30 @@ $$(function () {
     }
 
     return XHRRequestTracker;
-
   })();
 
   SocketRequestTracker = (function () {
     function SocketRequestTracker(request) {
-      var event, _j, _len1, _ref2,
+      var event,
+        _j,
+        _len1,
+        _ref2,
         _this = this;
       this.progress = 0;
-      _ref2 = ['error', 'open'];
+      _ref2 = ["error", "open"];
       for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
         event = _ref2[_j];
-        request.addEventListener(event, function () {
-          return _this.progress = 100;
-        }, false);
+        request.addEventListener(
+          event,
+          function () {
+            return (_this.progress = 100);
+          },
+          false
+        );
       }
     }
 
     return SocketRequestTracker;
-
   })();
 
   ElementMonitor = (function () {
@@ -870,7 +970,6 @@ $$(function () {
     }
 
     return ElementMonitor;
-
   })();
 
   ElementTracker = (function () {
@@ -885,29 +984,29 @@ $$(function () {
       if (document.querySelector(this.selector)) {
         return this.done();
       } else {
-        return setTimeout((function () {
+        return setTimeout(function () {
           return _this.check();
-        }), options.elements.checkInterval);
+        }, options.elements.checkInterval);
       }
     };
 
     ElementTracker.prototype.done = function () {
-      return this.progress = 100;
+      return (this.progress = 100);
     };
 
     return ElementTracker;
-
   })();
 
   DocumentMonitor = (function () {
     DocumentMonitor.prototype.states = {
       loading: 0,
       interactive: 50,
-      complete: 100
+      complete: 100,
     };
 
     function DocumentMonitor() {
-      var _onreadystatechange, _ref2,
+      var _onreadystatechange,
+        _ref2,
         _this = this;
       this.progress = (_ref2 = this.states[document.readyState]) != null ? _ref2 : 100;
       _onreadystatechange = document.onreadystatechange;
@@ -920,12 +1019,15 @@ $$(function () {
     }
 
     return DocumentMonitor;
-
   })();
 
   EventLagMonitor = (function () {
     function EventLagMonitor() {
-      var avg, interval, last, points, samples,
+      var avg,
+        interval,
+        last,
+        points,
+        samples,
         _this = this;
       this.progress = 0;
       avg = 0;
@@ -945,13 +1047,12 @@ $$(function () {
           _this.progress = 100;
           return clearInterval(interval);
         } else {
-          return _this.progress = 100 * (3 / (avg + 3));
+          return (_this.progress = 100 * (3 / (avg + 3)));
         }
       }, 50);
     }
 
     return EventLagMonitor;
-
   })();
 
   Scaler = (function () {
@@ -962,14 +1063,14 @@ $$(function () {
       this.catchup = 0;
       this.progress = this.lastProgress = 0;
       if (this.source != null) {
-        this.progress = result(this.source, 'progress');
+        this.progress = result(this.source, "progress");
       }
     }
 
     Scaler.prototype.tick = function (frameTime, val) {
       var scaling;
       if (val == null) {
-        val = result(this.source, 'progress');
+        val = result(this.source, "progress");
       }
       if (val >= 100) {
         this.done = true;
@@ -997,7 +1098,6 @@ $$(function () {
     };
 
     return Scaler;
-
   })();
 
   sources = null;
@@ -1040,13 +1140,13 @@ $$(function () {
     ajax: AjaxMonitor,
     elements: ElementMonitor,
     document: DocumentMonitor,
-    eventLag: EventLagMonitor
+    eventLag: EventLagMonitor,
   };
 
   (init = function () {
     var type, _j, _k, _len1, _len2, _ref2, _ref3, _ref4;
     Pace.sources = sources = [];
-    _ref2 = ['ajax', 'elements', 'document', 'eventLag'];
+    _ref2 = ["ajax", "elements", "document", "eventLag"];
     for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
       type = _ref2[_j];
       if (options[type] !== false) {
@@ -1058,13 +1158,13 @@ $$(function () {
       source = _ref4[_k];
       sources.push(new source(options));
     }
-    Pace.bar = bar = new Bar;
+    Pace.bar = bar = new Bar();
     scalers = [];
-    return uniScaler = new Scaler;
+    return (uniScaler = new Scaler());
   })();
 
   Pace.stop = function () {
-    Pace.trigger('stop');
+    Pace.trigger("stop");
     Pace.running = false;
     bar.destroy();
     cancelAnimation = true;
@@ -1078,7 +1178,7 @@ $$(function () {
   };
 
   Pace.restart = function () {
-    Pace.trigger('restart');
+    Pace.trigger("restart");
     Pace.stop();
     return Pace.start();
   };
@@ -1089,18 +1189,18 @@ $$(function () {
     bar.render();
     start = now();
     cancelAnimation = false;
-    return animation = runAnimation(function (frameTime, enqueueNextFrame) {
+    return (animation = runAnimation(function (frameTime, enqueueNextFrame) {
       var avg, count, done, element, elements, i, j, remaining, scaler, scalerList, sum, _j, _k, _len1, _len2, _ref2;
       remaining = 100 - bar.progress;
       count = sum = 0;
       done = true;
       for (i = _j = 0, _len1 = sources.length; _j < _len1; i = ++_j) {
         source = sources[i];
-        scalerList = scalers[i] != null ? scalers[i] : scalers[i] = [];
+        scalerList = scalers[i] != null ? scalers[i] : (scalers[i] = []);
         elements = (_ref2 = source.elements) != null ? _ref2 : [source];
         for (j = _k = 0, _len2 = elements.length; _k < _len2; j = ++_k) {
           element = elements[j];
-          scaler = scalerList[j] != null ? scalerList[j] : scalerList[j] = new Scaler(element);
+          scaler = scalerList[j] != null ? scalerList[j] : (scalerList[j] = new Scaler(element));
           done &= scaler.done;
           if (scaler.done) {
             continue;
@@ -1113,16 +1213,16 @@ $$(function () {
       bar.update(uniScaler.tick(frameTime, avg));
       if (bar.done() || done || cancelAnimation) {
         bar.update(100);
-        Pace.trigger('done');
+        Pace.trigger("done");
         return setTimeout(function () {
           bar.finish();
           Pace.running = false;
-          return Pace.trigger('hide');
+          return Pace.trigger("hide");
         }, Math.max(options.ghostTime, Math.max(options.minTime - (now() - start), 0)));
       } else {
         return enqueueNextFrame();
       }
-    });
+    }));
   };
 
   Pace.start = function (_options) {
@@ -1133,24 +1233,23 @@ $$(function () {
     } catch (_error) {
       NoTargetError = _error;
     }
-    if (!document.querySelector('.pace')) {
+    if (!document.querySelector(".pace")) {
       return setTimeout(Pace.start, 50);
     } else {
-      Pace.trigger('start');
+      Pace.trigger("start");
       return Pace.go();
     }
   };
 
-  if (typeof define === 'function' && define.amd) {
+  if (typeof define === "function" && define.amd) {
     define(function () {
       return Pace;
     });
-  } else if (typeof exports === 'object') {
+  } else if (typeof exports === "object") {
     module.exports = Pace;
   } else {
     if (options.startOnPageLoad) {
       Pace.start();
     }
   }
-
-}).call(this);
+}.call(this));
