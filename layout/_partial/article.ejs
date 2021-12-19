@@ -1,12 +1,10 @@
 <% if (page.photos && page.photos.length) { %> <%- css(theme.gallery.fancybox_css) %>
-<article class="mdui-row-xs-2 mdui-row-sm-3 mdui-row-md-4 mdui-row-lg-5 mdui-row-xl-6 mdui-grid-list"
-  style="margin: 0 auto">
+<article class="mdui-row-xs-2 mdui-row-sm-3 mdui-row-md-4 mdui-row-lg-5 mdui-row-xl-6 mdui-grid-list" style="margin: 0 auto">
   <% page.photos.forEach(function (photo) { %>
   <div class="mdui-col">
     <div class="mdui-grid-tile mdui-hoverable">
       <a data-fancybox="gallery" href="<%- url_for(photo) %>">
-        <img src="/images/grey.png" class="lazyload" data-original="<%- url_for(photo) %>"
-          style="height: 160px; border-radius: 2px" />
+        <img src="/images/grey.png" class="lazyload" data-original="<%- url_for(photo) %>" style="height: 160px; border-radius: 2px" />
       </a>
     </div>
   </div>
@@ -155,17 +153,14 @@
 </style>
 <article class="mdui-card mdui-m-b-5">
   <header class="mdui-card-media">
-    <img
-      src="<%- page.thumbnail || page.cover || '/images/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png' %>"
-      style="max-height: 240px" />
+    <img src="<%- page.thumbnail || page.cover || '/images/random/material-' + (Math.round(Math.random() * 18) + 1) + '.png' %>" style="max-height: 240px" />
     <div class="mdui-card-media-covered">
       <div class="mdui-card-primary">
         <div class="mdui-card-primary-title"><%= page.title %></div>
         <div class="mdui-card-primary-subtitle">
           <i class="iconfont">&#xe697;</i> <%- date(page.date) %> / <i class="iconfont">&#xe601;</i> <%=
           get_author_name(page, config) %> <% if (theme.busuanzi.page) { %> &nbsp;&nbsp;
-          <span id="busuanzi_container_page_pv" style="display: none"><i class="iconfont">&#xe7fd;</i> <span
-              id="busuanzi_value_page_pv"></span></span>
+          <span id="busuanzi_container_page_pv" style="display: none"><i class="iconfont">&#xe7fd;</i> <span id="busuanzi_value_page_pv"></span></span>
           <% } %>
         </div>
       </div>
@@ -183,8 +178,7 @@
           <% if (theme.qrcode.use === 'plugin') { %>
           <img src="<%- qrcode(page.permalink, {margin: 2}) %>" />
           <% } else { %>
-          <img
-            src="<% if (page.lang === 'zh-CN') { %>http://qr.liantu.com/api.php?w=246&m=10&text=<%- page.permalink %><% } else { %>https://chart.googleapis.com/chart?cht=qr&chs=246x246&chl=<%- page.permalink %>&chld=M|2<% } %>" />
+          <img src="<% if (page.lang === 'zh-CN') { %>http://qr.liantu.com/api.php?w=246&m=10&text=<%- page.permalink %><% } else { %>https://chart.googleapis.com/chart?cht=qr&chs=246x246&chl=<%- page.permalink %>&chld=M|2<% } %>" />
           <% } %>
         </li>
       </ul>
@@ -194,32 +188,25 @@
       </button>
       <ul class="mdui-menu" id="share_menu">
         <li class="mdui-menu-item">
-          <a href="http://service.weibo.com/share/share.php?appkey=&title=<%= page.title %>&url=<%- page.permalink %>&pic=<%- config.url + url_for(theme.favicon) %>&searchPic=false&style=simple"
-            target="_blank" class="mdui-ripple"><%= __('share.weibo') %></a>
+          <a href="//service.weibo.com/share/share.php?appkey=&title=<%= page.title %>&url=<%- page.permalink %>&pic=<%- config.url + url_for(theme.favicon) %>&searchPic=false&style=simple" target="_blank" class="mdui-ripple"><%= __('share.weibo') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://twitter.com/intent/tweet?text=<%= page.title %>&url=<%- page.permalink %>&via=<%= config.author %>"
-            target="_blank" class="mdui-ripple"><%= __('share.twitter') %></a>
+          <a href="https://twitter.com/intent/tweet?text=<%= page.title %>&url=<%- page.permalink %>&via=<%= config.author %>" target="_blank" class="mdui-ripple"><%= __('share.twitter') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=<%- page.permalink %>" target="_blank"
-            class="mdui-ripple"><%= __('share.facebook') %></a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=<%- page.permalink %>" target="_blank" class="mdui-ripple"><%= __('share.facebook') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://plus.google.com/share?url=<%- page.permalink %>" target="_blank"
-            class="mdui-ripple"><%= __('share.google_plus') %></a>
+          <a href="https://plus.google.com/share?url=<%- page.permalink %>" target="_blank" class="mdui-ripple"><%= __('share.google_plus') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%- page.permalink %>&title=<%= page.title %>"
-            target="_blank" class="mdui-ripple"><%= __('share.linkedin') %></a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%- page.permalink %>&title=<%= page.title %>" target="_blank" class="mdui-ripple"><%= __('share.linkedin') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="http://connect.qq.com/widget/shareqq/index.html?site=<%= config.title %>&title=<%= page.title %>&pics=<%- config.url + url_for(theme.favicon) %>&url=<%- page.permalink %>"
-            target="_blank" class="mdui-ripple"><%= __('share.qq') %></a>
+          <a href="http://connect.qq.com/widget/shareqq/index.html?site=<%= config.title %>&title=<%= page.title %>&pics=<%- config.url + url_for(theme.favicon) %>&url=<%- page.permalink %>" target="_blank" class="mdui-ripple"><%= __('share.qq') %></a>
         </li>
         <li class="mdui-menu-item">
-          <a href="https://telegram.me/share/url?url=<%- page.permalink %>&text=<%= page.title %>" target="_blank"
-            class="mdui-ripple"><%= __('share.telegram') %></a>
+          <a href="https://telegram.me/share/url?url=<%- page.permalink %>&text=<%= page.title %>" target="_blank" class="mdui-ripple"><%= __('share.telegram') %></a>
         </li>
       </ul>
       <% } %>
@@ -228,8 +215,7 @@
   <div class="mdui-card-content mdui-typo">
     <%- page.content %> <% if (is_post() && page.donate !== false && theme.donate && theme.donate.length) { %>
     <div class="mdui-m-y-2 mdui-text-center">
-      <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple"
-        mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '<%= __('donate') %>', position: 'top'}">
+      <button class="mdui-fab mdui-color-deep-orange mdui-text-color-white mdui-ripple" mdui-dialog="{target: '#donate'}" mdui-tooltip="{content: '<%= __('donate') %>', position: 'top'}">
         <i class="mdui-icon material-icons">thumb_up</i>
       </button>
     </div>
@@ -281,9 +267,7 @@
         </ul>
       </small>
       <hr>
-      <a href="https://search.google.com/test/rich-results?url=<%- encodeURIComponent(page.permalink) %>"
-        rel="nofollow"><i>Google Rich Snippets</i></a> | <a
-        href="https://validator.schema.org/#url=<%- encodeURIComponent(page.permalink) %>">Schema Markup Validator</a> |
+      <a href="https://search.google.com/test/rich-results?url=<%- encodeURIComponent(page.permalink) %>" rel="nofollow"><i>Google Rich Snippets</i></a> | <a href="https://validator.schema.org/#url=<%- encodeURIComponent(page.permalink) %>">Schema Markup Validator</a> |
       <a href="https://pagespeed.web.dev/report?url=<%- encodeURIComponent(page.permalink) %>">Google Pagespeed
         Insight</a>
     </blockquote>
@@ -319,7 +303,7 @@
 </article>
 <%- js([theme.gallery.jquery_js, theme.gallery.fancybox_js]) %>
 <script>
-  $("#main article .mdui-card-content img.fancybox").on("click", function (e) {
+  $("#main article .mdui-card-content img.fancybox").on("click", function(e) {
     $.fancybox.open({
       src: $(this).attr("src"),
     });

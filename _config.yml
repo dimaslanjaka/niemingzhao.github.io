@@ -59,7 +59,7 @@ gallery:
 busuanzi:
   site: false
   page: false
-  busuanzi_js: http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+  busuanzi_js: //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
 qrcode:
   caption: Send to phone
   use: online
