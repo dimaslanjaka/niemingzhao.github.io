@@ -17,6 +17,7 @@
     "hexo-fs": "^3.1.0",
     "hexo-log": "^3.0.0",
     "lodash": "^4.17.21",
+    "mdui": "^1.0.2",
     "moment": "^2.29.1",
     "object-assign": "^4.1.1",
     "prettier": "^2.4.1",

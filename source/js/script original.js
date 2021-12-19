@@ -1,8 +1,4 @@
-const mdui = /** @type {import("mdui/es/interfaces/MduiStatic").MduiStatic} */ (window.mdui);
-/**
- * @type {import("mdui/es/interfaces/MduiStatic").MduiStatic['$']}
- */
-const $$ = mdui.$;
+var $$ = mdui.$;
 
 /* Gotop */
 $$(function () {
@@ -26,6 +22,29 @@ $$(function () {
 });
 
 /* Dark Mode */
+$$.fn.extend({
+  longPress: function (fn) {
+    var $this = this;
+    for (var i = 0; i < $this.length; i++) {
+      (function (target) {
+        var timeout;
+        var start = function (event) {
+          timeout = setTimeout(function () {
+            fn(event);
+          }, 500);
+        };
+        var end = function (event) {
+          clearTimeout(timeout);
+        };
+        target.addEventListener("mousedown", start, false);
+        target.addEventListener("mouseup", end, false);
+        target.addEventListener("touchstart", start, false);
+        target.addEventListener("touchend", end, false);
+      })($this[i]);
+    }
+  },
+});
+
 function mediaSupported() {
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
@@ -37,20 +56,22 @@ if (preferDarkMode()) {
   document.body.classList.toggle("mdui-theme-layout-dark", true);
 }
 
-// handle media change
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
-  if (e.matches) {
-    document.body.classList.toggle("mdui-theme-layout-dark", true);
-    //localStorage.setItem("mdui-theme-layout-dark", "true");
-  } else {
-    document.body.classList.toggle("mdui-theme-layout-dark", false);
-    //localStorage.removeItem("mdui-theme-layout-dark");
-  }
-});
-
+let changeWatcher = false;
 $$(function () {
-  $$("#dark-mode-button").on("click", function (e) {
-    e.preventDefault();
+  $$("#header").longPress(function (e) {
+    if (!changeWatcher) {
+      changeWatcher = true;
+      // handle media change
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+        if (e.matches) {
+          document.body.classList.toggle("mdui-theme-layout-dark", true);
+          localStorage.setItem("mdui-theme-layout-dark", "true");
+        } else {
+          document.body.classList.toggle("mdui-theme-layout-dark", false);
+          localStorage.removeItem("mdui-theme-layout-dark");
+        }
+      });
+    }
     if (!mediaSupported()) {
       if (document.body.classList.contains("mdui-theme-layout-dark")) {
         document.body.classList.remove("mdui-theme-layout-dark");
@@ -62,12 +83,10 @@ $$(function () {
     }
   });
 
-  if ($$("#donate").length) {
-    var tab = new mdui.Tab("#donate .mdui-tab");
-    $$("#donate").on("opened.mdui.dialog", function (e) {
-      tab.handleUpdate();
-    });
-  }
+  var tab = new mdui.Tab("#donate .mdui-tab");
+  $$("#donate").on("opened.mdui.dialog", function (e) {
+    tab.handleUpdate();
+  });
 });
 
 /* Drawer State */
