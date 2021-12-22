@@ -32,12 +32,12 @@ function mediaSupported() {
 const preferDarkMode = function () {
   return mediaSupported || localStorage.getItem("mdui-theme-layout-dark");
 };
-
+// if dark mode selected, turn on dark mode
 if (preferDarkMode()) {
   document.body.classList.toggle("mdui-theme-layout-dark", true);
 }
 
-window.onload = () => {
+/*window.onload = () => {
   // handle media change
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
     if (e.matches) {
@@ -48,7 +48,7 @@ window.onload = () => {
       //localStorage.removeItem("mdui-theme-layout-dark");
     }
   });
-};
+};*/
 
 $$(function () {
   $$("#dark-mode-button").on("click", function (e) {
